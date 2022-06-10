@@ -21,14 +21,14 @@ RUN echo 'export PATH=/opt/miniconda/bin:$PATH' > /etc/profile.d/conda.sh && \
     rm /tmp/miniconda.sh
 
 # Install tini
-RUN apt-get install -y curl grep sed dpkg tini && \
+RUN apt-get install -y curl grep sed dpkg && \
     apt-get clean 
 
 # Setup required ENV variables
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV PATH /opt/conda/bin:$PATH
+ENV PATH /opt/miniconda/bin:$PATH
 
 # Run tini as PID 1
-ENTRYPOINT [ "/usr/bin/tini", "--" ]
+#ENTRYPOINT [ "/usr/bin/tini", "--" ]
 
 
